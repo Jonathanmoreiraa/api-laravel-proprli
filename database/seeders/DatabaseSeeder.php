@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\TasksStatuses::factory()->create(['name' => 'Rejected']);
         \App\Models\User::factory(5)->create();
         \App\Models\Building::factory(5)->create();
-        \App\Models\Task::factory(5)->create();
+        \App\Models\Task::factory(1)->create();
+        \App\Models\Comment::factory(1)->create();
     }
 }

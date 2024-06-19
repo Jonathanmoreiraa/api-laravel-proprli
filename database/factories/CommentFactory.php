@@ -13,11 +13,12 @@ class CommentFactory extends Factory
 {
     public function definition(): array
     {
+        $task = Task::inRandomOrder()->first();
         return [
             'comment' => fake()->text(),
             'date' => fake()->dateTime(),
-            'task_id' => Task::all()->random()->id,
-            'user_id' => User::all()->random()->id
+            'task_id' => $task->id,
+            'user_id' => $task->creator_id
         ];
     }
 }
