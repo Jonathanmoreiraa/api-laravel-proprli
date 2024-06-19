@@ -14,12 +14,13 @@ class TaskFactory extends Factory
 {
     public function definition(): array
     {
+        $building = Building::inRandomOrder()->first();
         return [
             'title' => fake()->title(),
             'description' => fake()->text(),
-            'status_id' => TasksStatuses::all()->random()->id,
-            'building_id' => Building::all()->random()->id,
-            'creator_id' => User::where('user_type_id', 1)->inRandomOrder()->first()->id,
+            'status_id' => TasksStatuses::where('id', 1)->first()->id,
+            'building_id' => $building->id,
+            'creator_id' =>  $building->user_id,
             'assignee_id' => User::where('user_type_id', 2)->inRandomOrder()->first()->id,
         ];
     }
